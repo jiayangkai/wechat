@@ -1,0 +1,2 @@
+/* weather.wxss */
+@import "../../styles/index/searchbar.wxss";
