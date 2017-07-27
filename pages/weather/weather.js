@@ -5,10 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //城市天气
     city: {},
     inputVal: "",
+    //定位城市
     currentCity: "",
-    inputShow: false
+    inputShow: false,
+    //定位区
+    district: ""
   },
   //输入事件
   inputTyping: function (e) {
@@ -24,7 +28,48 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
+    //定位地理位置
+    wx.getLocation({
+      success: function (res) {
+        //获取经纬度
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        //根据经纬度逆解析出地址
+        var locationurl = "http://apis.map.qq.com/ws/geocoder/v1/?location=" + latitude + "," + longitude + "&key=GPPBZ-RFNHO-VLRWL-SA4TR-CL5G6-42F6N";
+        wx.request({
+          url: locationurl,
+          data: {},
+          header: {
+            'content-type': 'application/json'
+          },
+          success: function (res) {
+            //得到详细地址
+            var data = res.data;
+            that.setData({
+              inputVal: data.result.address_component.city,
+              currentCity: data.result.address_component.city,
+              district: data.result.address_component.district
+            });
+          },
+          //获取地址失败，则手动输入
+          fail: function (res) {
+            that.setData({
+              inputShow: true,
+              inputVal: "",
+              currentCity: "定位失败，请手动输入"
+            });
+          }
+        });
+      },
+      //获取经纬度失败，则手动输入
+      fail: function (res) {
+        that.setData({
+          inputShow: true,
+          inputVal: "",
+          currentCity: "定位失败，请手动输入"
+        });
+      }
+    })
   },
 
   /**

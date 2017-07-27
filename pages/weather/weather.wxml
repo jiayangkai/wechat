@@ -1,5 +1,6 @@
 <view class="container">
- <view class="city">
-  <input type="text" placeholder="请输入要查询的城市" value="{{inputVal}}" focus="{{inputShow}}" bindinput="inputTyping"/>
- </view>
+<view class="city">
+    <input type="text" placeholder="请输入要查询的城市" value="{{inputVal}}" hidden="{{inputShow?false:true}}" focus="{{inputShow}}" bindinput="inputTyping" />
+    <text class="show-text">{{currentCity}}</text>
+  </view>
 </view>

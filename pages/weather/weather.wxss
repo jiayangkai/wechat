@@ -1,2 +1,6 @@
 /* weather.wxss */
 @import "../../styles/index/searchbar.wxss";
+
+.container{
+  background: #0099CC
+}
