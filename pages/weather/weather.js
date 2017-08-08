@@ -1,18 +1,20 @@
 // weather.js
-var url = "http://localhost:9527/api/weather/GetWeatherByCity?cityName="
+var WxParse = require('../../utils/wxParse/wxParse.js');
+var url = "http://192.168.1.31:9009/api/weather/GetWeatherByCity?cityName=";
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     //城市天气
-    city: {},
+    cityWeather: {},
     inputVal: "",
     //定位城市
     currentCity: "",
     inputShow: false,
     //定位区
-    district: ""
+    district: "",
+    weatherSrc: ""
   },
   //输入事件
   inputTyping: function (e) {
@@ -20,6 +22,25 @@ Page({
     that.setData({
       inputVal: e.detail.value,
       inputShow: true
+    })
+  },
+  //根据城市获取天气信息
+  getWeatherData: function (city) {
+    var that = this;
+    wx.request({
+      url: url + city,
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        var data = res.data;
+        for (var index in data.HeWeather5[0].daily_forecast) {
+          data.HeWeather5[0].daily_forecast[index].cond.src = "../images/" + data.HeWeather5[0].daily_forecast[index].cond.txt_d + ".png";
+        }
+        
+        that.setData({
+          cityWeather: data,
+        });
+      }
     })
   },
 
@@ -50,6 +71,9 @@ Page({
               currentCity: data.result.address_component.city,
               district: data.result.address_component.district
             });
+            //区不为空则查询区天气，为空则查当前城市天气
+            //that.getWeatherData(that.data.district == "" ? that.data.currentCity : that.data.district);
+            that.getWeatherData(that.data.currentCity);
           },
           //获取地址失败，则手动输入
           fail: function (res) {

@@ -1,6 +1,23 @@
+<import src="../../utils/wxParse/wxParse.wxml" />
 <view class="container">
-<view class="city">
-    <input type="text" placeholder="请输入要查询的城市" value="{{inputVal}}" hidden="{{inputShow?false:true}}" focus="{{inputShow}}" bindinput="inputTyping" />
-    <text class="show-text">{{currentCity}}</text>
+  <view class="city">
+    <view class="city-glass">
+      <text class="show-text">+ {{currentCity}}{{district==""?"":"."}}{{district}}</text>
+    </view>
+    <view class="aqi-glass">
+      <text class="aqi-text">{{cityWeather.HeWeather5[0].aqi.city.qlty}}</text>
+    </view>
+  </view>
+  <view class="image-glass">
+    <view class="image-content" wx:for="{{cityWeather.HeWeather5[0].daily_forecast}}" wx:key="{{index}}">
+      <view class="info-text"><label>{{item.cond.txt_d}}</label></view>
+      <view class="info-image">
+        <image src="{{item.cond.src}}" style="width:50px; height:50px"></image>
+      </view>
+
+    </view>
+  </view>
+  <view class="suggestion-glass">
+    1
   </view>
 </view>
