@@ -81,6 +81,11 @@
   color: #6666CC;
 }
 
+.info-text{
+  position: relative;
+  float: left;
+}
+
 .image-glass {
   display: flex;
   height: 200px;
@@ -98,6 +103,8 @@
   width: 50px;
   height: fit-content;
   display: flex;
+  position:relative;
+  float:left;
   word-wrap: break-word;
   padding-left: 20px;
 }
@@ -105,7 +112,7 @@
 .suggestion-glass{
   padding-top: 20px;
   display: flex;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
   /* margin-top: -200px; *//* margin-left: -400px; */
   border-radius: 5px;
@@ -115,5 +122,8 @@
   box-sizing: border-box;
   align-items: center;
   border-top: red;
+}
 
+.weui-grid-border{
+  border-top: 1rpx solid #6666CC;
 }
