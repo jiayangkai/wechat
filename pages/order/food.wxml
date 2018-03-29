@@ -1,0 +1,27 @@
+<import src="../common/orderPage.wxml" />
+<import src="../common/commentPage.wxml" />
+<view class="table">
+  <!-- 如果桌号不存在则提示扫码 -->
+  <view wx:if="{{tableNO < 1}}">
+    <view class='text-tip table'>请扫码确认桌号，否则无法下单</view>
+    <view class="weui-search-bar__cancel-btn table-btn" bindtap="scanCode">扫码</view>
+  </view>
+  <!--显示当前桌号  -->
+  <view class='table' wx:else>{{tableNO}}号桌</view>
+  <view class="container" disable-scroll="true">
+    <view class="header">
+      <block wx:for="{{swiperTitle}}" wx:key="">
+        <view class="title {{index==currentPage?'selected':''}}" data-index="{{index}}" bindtap="turnPage">{{item.text}}</view>
+      </block>
+    </view>
+    <swiper class="swiper" current="{{currentPage}}" bindchange="turnTitle">
+      <swiper-item id="orderPage">
+        <template is="orderPage" data="{{menu,selected,howMuch,cost,pullBar}}" />
+      </swiper-item>
+      <swiper-item id="commentPage">
+        <template is="commentPage" data="{{categoryList}}" />
+      </swiper-item>
+      <swiper-item id="restaurantPage"></swiper-item>
+    </swiper>
+  </view>
+</view>

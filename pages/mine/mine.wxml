@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="header">
+    <image class='userImg' src='{{userInfo.avatarUrl}}'></image>
+    <view class="userName">{{userInfo.nickName}}</view>
+  </view>
+  <view class="content">
+    <view class="coupon">我的订单</view>
+    <!-- <view class="address">我的收货地址</view> -->
+    <view class="tel">小店电话: 18516566441</view>
+    <view class="signOut">退出账号</view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<template name="commentPage">
+  <view class="commentPage-header">
+    健康小吃，美味相伴
+  </view>
+</template>

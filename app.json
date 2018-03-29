@@ -1,34 +1,31 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/express/expressInfo",
-    "pages/sendExpress/sendIndex",
-    "pages/sendExpress/sendIndex",
-    "pages/weather/weather"
+    "pages/order/food",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "生活集",
+    "navigationBarTitleText": "饭点饭",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#6666CC",
-    "selectedColor": "#0066CC",
+    "color": "#272636",
+    "selectedColor": "#FFD161",
     "borderStyle": "sliver",
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "text": "查快递",
-        "pagePath": "pages/index/index",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": "点餐",
+        "pagePath": "pages/order/food",
+        "iconPath": "pages/images/order.png",
+        "selectedIconPath": "pages/images/order-selected.png"
       },
       {
-        "text": "查天气",
-        "pagePath": "pages/weather/weather",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "pages/images/home.png",
+        "selectedIconPath": "pages/images/home-selected.png"
       }
     ]
   }
