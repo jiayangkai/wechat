@@ -27,5 +27,12 @@ App({
   globalData: {
     userInfo: null,
     resData: []
+  },
+
+  showNavigationBarLoading: function () {
+    wx.showNavigationBarLoading()
+  },
+  hideNavigationBarLoading: function () {
+    wx.hideNavigationBarLoading()
   }
 })

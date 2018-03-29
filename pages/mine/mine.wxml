@@ -1,12 +1,19 @@
 <view class="container">
   <view class="header">
-    <image class='userImg' src='{{userInfo.avatarUrl}}'></image>
+    <image class='userImg' src='{{isLogin?userInfo.avatarUrl:""}}'></image>
     <view class="userName">{{userInfo.nickName}}</view>
   </view>
   <view class="content">
-    <view class="coupon">我的订单</view>
+    <view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">我的订单</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+    </view>
     <!-- <view class="address">我的收货地址</view> -->
-    <view class="tel">小店电话: 18516566441</view>
-    <view class="signOut">退出账号</view>
+    <view class="tel">客服电话: 18516566441</view>
+    <button class="weui-btn" type="warn" hidden='{{!isLogin}}' bindtap='singOut'>退出账号</button>
+    <button class="weui-btn" type="primary" hidden='{{isLogin}}' bindtap='singIn'>登录</button>
+
   </view>
 </view>
